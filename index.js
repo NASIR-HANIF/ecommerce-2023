@@ -7,7 +7,7 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
-import path from "path";
+import path, { dirname } from "path";
 // const __dirname = path.resolve()
 
 import {fileURLToPath} from 'url'
@@ -38,12 +38,13 @@ app.use("/api/v1/product", productRoutes);
 
 
 
-app.use(express.static(path.join(__dirname , "./client/build")))
+app.use(express.static(path.join(__dirname , "/client/build")))
 
 
 //rest api
 app.get("*", function(req, res){
-  res.sendFile(path.join(__dirname , "./client/build/index.html"),function(error){
+  res.sendFile(path.join(__dirname , "/client/build/index.html"),function(error){
+    console.log(__dirname)
     res.status(500).send(error)
   })
 });
