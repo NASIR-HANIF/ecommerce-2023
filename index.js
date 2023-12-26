@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname , "./client/build")))
 
 
 //rest api
-app.get("*", function(req, res){
+app.get("/*", function(req, res){
   res.sendFile(path.join(__dirname , "./client/build/index.html"),function(error){
     res.status(500).send(error)
   })
