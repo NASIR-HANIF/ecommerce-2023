@@ -46,10 +46,25 @@ app.get("*", function(req, res){
 //PORT
 const PORT = process.env.PORT || 8080;
 
+
+
+
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(
+      `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
+        .white
+    )
+  })
+})
+
+
+/*
 //run listen
 app.listen(PORT, () => {
   console.log(
     `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
       .white
   );
-});
+});*/
