@@ -8,7 +8,7 @@ const connectDB = async () => {
 const  DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@myfirstcluster.2zedvpv.mongodb.net/ecommerce`
 // const DB_URL = 'mongodb://127.0.0.1:27017/ecommerce'
   try {
-    const conn = await mongoose.connect(DB_URL);
+    const conn = await mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
     console.log(
       `Conneted To Mongodb Databse ${conn.connection.host}`.bgMagenta.white
     );
