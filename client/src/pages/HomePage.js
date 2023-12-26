@@ -19,12 +19,12 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const myurl = "https://dark-blue-colt-sock.cyclic.app"
+
 
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`${myurl}/api/v1/category/get-category`);
+      const { data } = await axios.get("/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
