@@ -59,9 +59,9 @@ const ProductDetails = () => {
           <h6>Description : {product.description}</h6>
           <h6>
             Price :
-            {product?.price?.toLocaleString("en-US", {
+            {product?.price?.toLocaleString("en-PK", {
               style: "currency",
-              currency: "USD",
+              currency: "PKR",
             })}
           </h6>
           <h6>Category : {product?.category?.name}</h6>
@@ -79,14 +79,14 @@ const ProductDetails = () => {
         </div>
       </div>
       <hr />
-      <div className=" similar-products">
-        <h4>Similar Products ➡️</h4>
+      <div className=" similar-products p-3">
+        <h4>Similar Products ➡️ </h4>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
         <div className="row d-flex flex-row justify-content-center">
           {relatedProducts?.map((p ,i) => (
-            <div  className="card m-2" key={i}>
+            <div  className="card h-100 m-2" key={i}>
               <img
                 src={`/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top"
@@ -96,9 +96,9 @@ const ProductDetails = () => {
                 <div className="card-name-price">
                   <h5 className="card-title">{p.name}</h5>
                   <h5 className="card-title card-price">
-                    {p.price.toLocaleString("en-US", {
+                    {p.price.toLocaleString("en-PK", {
                       style: "currency",
-                      currency: "USD",
+                      currency: "PKR",
                     })}
                   </h5>
                 </div>

@@ -22,7 +22,9 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <nav className="navbar shadow-sm navbar-expand-lg  fixed-top navbar-light bg-light"
+     
+      >
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -38,7 +40,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
             <img src="/nasir.webp" alt="nasir" width="50" height="24" className="px-2" />
-                Ecommerce
+                Nasir
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />

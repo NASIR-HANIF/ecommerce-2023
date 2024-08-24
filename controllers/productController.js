@@ -359,6 +359,7 @@ export const brainTreePaymentController = async (req, res) => {
         },
       },
       function (error, result) {
+       
         if (result) {
           const order = new orderModel({
             products: cart,

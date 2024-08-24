@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+body{
+  background: #ffffff;
+}
+
 /* font-family: 'Poppins', sans-serif; */
 /* font-family: 'Playfair Display', serif; */
 
@@ -15,9 +19,9 @@
   font-size: 17px;
   line-height: 26px;
   text-transform: uppercase;
-  box-shadow: 0 8px 6px -6px gray;
+  /* box-shadow: 0 8px 6px -6px gray;
   --webkit-box-shadow: 0 8px 6px -6px gray;
-  border-bottom: solid gray !important;
+  border-bottom: solid gray !important; */
 }
 
 .nav-link {
@@ -52,25 +56,25 @@
 ==========footer============= */
 
 .footer {
-  color: white;
+  color: #2E2925;
   padding: 25px;
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
+  background: #DADBDA; /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(
     to right,
     #434343,
     #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #434343, #000000);
+  ); /* Chrome 10-25, Safari 5.1-6 
+  background: linear-gradient(to right, #434343, #000000); */
 }
 
 .footer a {
   text-decoration: none;
-  color: white;
+  color: #2E2925;
   padding: 10px;
 }
 
 .footer a:hover {
-  color: #ffefba;
+  color: #949594;
   border-bottom: 1px solid #ffefba;
 }
 /* =================================
@@ -108,7 +112,7 @@
 .contactus {
   margin: 0;
   padding: 0;
-  height: 70vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;

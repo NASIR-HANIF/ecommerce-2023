@@ -18,3 +18,219 @@
               </div>
             ))}
           </div>
+
+          ----------------------------------------------------------
+          draz pe shift honey se pehley ka card code
+
+          <div className="w-full">
+            <div className="row justify-content-center">
+              {products?.map((p) => (
+                <div className=" col-sm-6 col-md-6 col-lg-4 p-0" key={p._id}>
+                  <div className="card">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top"
+                      alt={p.name}
+                    />
+                    <div className="card-body">
+                      <div className="card-name-price">
+                        <h5 className="card-title">{p.name.substring(0, 30)}...</h5>
+                        <h5 className="card-title card-price">
+                          {p.price.toLocaleString("en-PK", {
+                            style: "currency",
+                            currency: "PKR",
+                          })}
+                        </h5>
+                      </div>
+                      <p className="card-text ">
+                        {p.description.substring(0, 30)}...
+                      </p>
+                      <div className="card-name-price">
+                        <button
+                          className="btn btn-info ms-1"
+                          onClick={() => navigate(`/product/${p.slug}`)}
+                        >
+                          More Details
+                        </button>
+                        <button
+                          className="btn btn-dark ms-1"
+                          onClick={() => {
+                            setCart([...cart, p]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart");
+                          }}
+                        >
+                          ADD TO CART
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+
+          -----------------
+          card change kia 
+
+            <div className="row justify-content-center">
+              {products?.map((p) => (
+                <div className="col-sm-6 col-md-4 col-lg-3 p-2 bg-success" key={p._id}>
+                  <div className="product-card">
+                    <div className="product-image-wrapper">
+                      <img
+                        src={`/api/v1/product/product-photo/${p._id}`}
+                        className="product-img-top"
+                        alt={p.name}
+                      />
+                    </div>
+                    <div className="product-body">
+                      <div className="product-name-price">
+                        <h5 className="product-title">
+                          {p.name.length > 30 ? `${p.name.substring(0, 30)}...` : p.name}
+                        </h5>
+                        <h5 className="product-price">
+                          {p.price.toLocaleString("en-PK", {
+                            style: "currency",
+                            currency: "PKR",
+                          })}
+                        </h5>
+                      </div>
+                      <p className="product-text">
+                        {p.description.length > 30 ? `${p.description.substring(0, 30)}...` : p.description}
+                      </p>
+                      <div className="product-extra-info">
+                        <div className="product-rating">
+                          ⭐⭐⭐⭐☆ (4.5)
+                        </div>
+                      
+                      </div>
+                      <div className="product-buttons">
+                        <button
+                          className="btn btn-info ms-1 mb-2"
+                          onClick={() => navigate(`/product/${p.slug}`)}
+                        >
+                          More Details
+                        </button>
+                        <button
+                          className="btn btn-dark ms-1"
+                          onClick={() => {
+                            setCart([...cart, p]);
+                            localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                            toast.success("Item Added to cart");
+                          }}
+                        >
+                          ADD TO CART
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            ====================================
+            price section 
+
+             <span className="product-price">
+                        {p.price.toLocaleString("en-PK", {
+                          style: "currency",
+                          currency: "PKR",
+                        })}
+                      </span>
+==============================================
+finel card after add bootstrap card
+
+
+ <div className="col-md-9 p-3">
+          <h1 className="text-center">All Products</h1>
+
+
+
+          <div className="row justify-content-evenly bg-success">
+            {products?.map((p) => (
+              <div className="col-6 col-sm-6 col-md-4 col-lg-3" key={p._id}>
+                <div className="product-card ">
+                  <div className="product-image-wrapper">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="product-img-top img-fluid"
+                      alt={p.name}
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="product-body p-0 sm:p-2">
+                    <div className="product-name-price">
+                      <div className="product-title">
+                        {p.name.length > 30 ? `${p.name.substring(0, 30)}...` : p.name}
+                      </div>
+                      <div className="product-text">
+                      {p.description.length > 30 ? `${p.description.substring(0, 30)}...` : p.description}
+                    </div>
+                     <div className="price-container">
+                      <span className="currency">Rs.</span>
+                      <span className="price">
+                        {p.price}
+                      </span>
+                     </div>
+                    </div>
+                   
+                    <div className="product-extra-info">
+                      <div className="product-rating">
+                        ⭐⭐⭐⭐☆ (4.5)
+                      </div>
+                    </div>
+                    <div className="product-buttons flex flex-column flex-lg-row  ">
+                      <button
+                        className="btn btn-info ms-1 mb-2"
+                        onClick={() => navigate(`/product/${p.slug}`)}
+                      >
+                        More Details
+                      </button>
+                      <button
+                        className="btn btn-dark ms-1"
+                        onClick={() => {
+                          setCart([...cart, p]);
+                          localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                          toast.success("Item Added to cart");
+                        }}
+                      >
+                        ADD TO CART
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+
+
+
+
+
+          <div className="m-2 p-3">
+            {products && products.length < total && (
+              <button
+                className="btn loadmore"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPage(page + 1);
+                }}
+              >
+                {loading ? (
+                  "Loading ..."
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
+              </button>
+            )}
+          </div>
+        </div>

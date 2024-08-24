@@ -7,7 +7,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
-import "../styles/Homepage.css";
+import Slider from "../components/Slider/Slider";
+import "../styles/Homepage.css"
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -109,19 +110,20 @@ const HomePage = () => {
   };
   return (
     <Layout title={"ALl Products - Best offers "}>
-      {/* banner image */}
-      <img
-        src="/images/banner.png"
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-      />
-      {/* banner image */}
-      <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-3 filters">
+
+      {/* swiper start */}
+      <Slider />
+
+      {/* swiper end */}
+
+
+
+
+      <div className="container-fluid row home-page p-0">
+        <div className="col-md-2 filters p-3">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
-            {categories?.map((c ,i) => (
+            {categories?.map((c, i) => (
               <Checkbox
                 key={i}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
@@ -134,7 +136,7 @@ const HomePage = () => {
           <h4 className="text-center mt-4">Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p ,i) => (
+              {Prices?.map((p, i) => (
                 <div key={i}>
                   <Radio value={p.array}>{p.name}</Radio>
                 </div>
@@ -150,54 +152,54 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-9 ">
-          <h1 className="text-center">All Products</h1>
-          <div className="d-flex flex-wrap row d-flex justify-content-evenly">
+
+
+
+        <div class="col-md-10 my-5">
+          <h1 class="text-center mb-4">All Products</h1>
+          <div class="row justify-content-center">
             {products?.map((p) => (
-              <div className="card m-2" key={p._id}>
-                <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
-                  className="card-img-top"
-                  alt={p.name}
-                />
-                <div className="card-body">
-                  <div className="card-name-price">
-                    <h5 className="card-title">{p.name}</h5>
-                    <h5 className="card-title card-price">
-                      {p.price.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
-                    </h5>
-                  </div>
-                  <p className="card-text ">
-                    {p.description.substring(0, 60)}...
-                  </p>
-                  <div className="card-name-price">
-                    <button
-                      className="btn btn-info ms-1"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      More Details
-                    </button>
-                    <button
-                      className="btn btn-dark ms-1"
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("Item Added to cart");
-                      }}
-                    >
-                      ADD TO CART
-                    </button>
+              <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4" key={p._id} >
+                <div class="card h-100">
+                  <img src={`/api/v1/product/product-photo/${p._id}`}
+                    className="product-img-top img-fluid"
+                    alt={p.name} class="card-img-top" />
+                  <div class="card-body">
+                    <h5 class="card-title"> {p.name.length > 30 ? `${p.name.substring(0, 30)}...` : p.name}</h5>
+                    <p class="card-text"> {p.description.length > 30 ? `${p.description.substring(0, 30)}...` : p.description}</p>
+                    <div class="d-flex justify-content-start">
+                      <span class="text-muted">Rs.</span>
+                      <span class="price">{p.price}</span>
+                    </div>
+                    <div className="product-extra-info">
+                      <div className="product-rating">
+                        ⭐⭐⭐⭐☆ (4.5)
+                      </div>
+                    </div>
+                    <div className="product-buttons d-flex flex-column">
+                      <button
+                        className="btn btn-info ms-1 mb-2"
+                        onClick={() => navigate(`/product/${p.slug}`)}
+                      >
+                        More Details
+                      </button>
+                      <button
+                        className="btn btn-dark ms-1"
+                        onClick={() => {
+                          setCart([...cart, p]);
+                          localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                          toast.success("Item Added to cart");
+                        }}
+                      >
+                        ADD TO CART
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
@@ -218,6 +220,7 @@ const HomePage = () => {
               </button>
             )}
           </div>
+
         </div>
       </div>
     </Layout>

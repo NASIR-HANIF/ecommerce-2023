@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { Toaster } from "react-hot-toast";
 const Layout = ({ children, title, description, keywords, author }) => {
   return (
-    <div>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <meta name="description" content={description} />
@@ -20,15 +20,15 @@ const Layout = ({ children, title, description, keywords, author }) => {
         {children}
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 
 Layout.defaultProps = {
   title: "Ecommerce app - shop now",
-  description: "mern stack project",
-  keywords: "mern,react,node,mongodb",
-  author: "Techinfoyt",
+  description: "cloth and showes store",
+  keywords: "men wears,women wears",
+  author: "Nasir Hanif",
 };
 
 export default Layout;
